@@ -13,11 +13,9 @@ Route::post('login', [AuthController::class, 'store'])->name('store');
 
 Route::middleware(["admin"])->group(function () {
 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::resource('organization',OrganizationController::class);
-Route::resource('user', ManageUserController::class);
-Route::resource('cme', CmeController::class)->middleware('admin');
-Route::get('registereduser', [RegisteredUser::class, 'index'])->name('registered.member');
-
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('organization', OrganizationController::class);
+    Route::resource('user', ManageUserController::class);
+    Route::resource('cme', CmeController::class)->middleware('admin');
+    Route::get('registereduser', [RegisteredUser::class, 'index'])->name('registered.member');
 });
-?>

@@ -46,7 +46,7 @@
                 <div class="mt-5">
                     <label for="" class="font-medium">Choose Organization</label>
                     {{-- @dd($categories) --}}
-                    <select name="user_id" class="w-full border py-2 mt-1 text-black outline-none px-3 rounded-md">
+                    <select name="organization_id" class="w-full border py-2 mt-1 text-black outline-none px-3 rounded-md">
 
                         <option disabled selected>Choose Organization</option>
                         @foreach ($organizations as $organization)

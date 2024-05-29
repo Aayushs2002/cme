@@ -24,7 +24,7 @@ class CmeController extends Controller
         }else{
             $organizations = $user->organization->pluck('id');
             // $newes = News::whereIn('category_id', $categoryIds)->get();
-            $programs = CmeProgram::where('user_id', $organizations)->get();
+            $programs = CmeProgram::where('organization_id', $organizations)->get();
             // dd($programs);
         }
         return view('admin.cme.index',compact('programs'));
@@ -46,9 +46,9 @@ class CmeController extends Controller
     public function store(Request $request)
     {
         $req = $request->all();
-        if(check()==false){
-            $req['user_id'] = Auth::user()->id;
-        }
+        // if(check()==false){
+        //     $req['organization_id'] = Auth::user()->id;
+        // }
         CmeProgram::create($req);
         return redirect()->route('admin.cme.index')->with('success','CME Program created successfully');
     }

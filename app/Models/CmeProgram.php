@@ -13,6 +13,6 @@ class CmeProgram extends Model
         'description',
         'start_date',
         'status',
-        'user_id'
+        'organization_id'
     ];
 }

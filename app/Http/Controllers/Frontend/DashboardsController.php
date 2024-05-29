@@ -12,11 +12,11 @@ class DashboardsController extends Controller
 {
     public function index()
     {
-        $user_id = Auth::guard('members')->user()->organization_id;
-        // dd($user_id);
-        $ongoings = CmeProgram::where('user_id', $user_id)->where('status', 1)->get();
+        $organization_id = Auth::guard('members')->user()->organization_id;
+        // dd($organization_id);
+        $ongoings = CmeProgram::where('organization_id', $organization_id)->where('status', 1)->get();
         
-        $upcommings = CmeProgram::where('user_id', $user_id)->where('status', 0)->get();
+        $upcommings = CmeProgram::where('organization_id', $organization_id)->where('status', 0)->get();
         // dd($ongoings);
         return view('frontend.member.dashboard', compact('ongoings', 'upcommings'));
     }
