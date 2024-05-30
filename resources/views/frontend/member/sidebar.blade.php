@@ -25,12 +25,55 @@
                                 <path d="M14 4h6v4h-6z"></path>
                             </svg>
                         </div>
-                        <span
-                            class="pb-1 md:pb-0 text-3xl md:text-base block md:inline-block">Dashboard</span>
+                        <span class="pb-1 md:pb-0 text-3xl md:text-base block md:inline-block">Dashboard</span>
                     </a>
                 </li>
-           
-              
+                <li class="">
+                    <a href="{{route('profile')}}" class="flex py-1 md:py-3 pl-1 align-middle ">
+                        <div class="mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-layout-dashboard" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M4 4h6v8h-6z"></path>
+                                <path d="M4 16h6v4h-6z"></path>
+                                <path d="M14 12h6v8h-6z"></path>
+                                <path d="M14 4h6v4h-6z"></path>
+                            </svg>
+                        </div>
+                        <span class="pb-1 md:pb-0 text-3xl md:text-base block md:inline-block">Profile</span>
+                    </a>
+                </li>
+                <li class="">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+
+                        <div class="mr-2">
+
+                            <button class="flex gap-x-3">
+                                <div class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-layout-dashboard" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M4 4h6v8h-6z"></path>
+                                        <path d="M4 16h6v4h-6z"></path>
+                                        <path d="M14 12h6v8h-6z"></path>
+                                        <path d="M14 4h6v4h-6z"></path>
+                                    </svg>
+                                </div>
+                                <div class="">
+                                    logout
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+
+                </li>
+
+
 
 
 

@@ -1,5 +1,6 @@
 @extends('frontend.layout.main')
 @section('body')
+
 <section class="bg-gray-50 dada:bg-gray-900">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dada:text-white">
@@ -31,7 +32,7 @@
                         </div>
                         <a href="#" class="text-sm font-medium text-primary-600 hover:underline dada:text-primary-500">Forgot password?</a>
                     </div>
-                    <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dada:bg-primary-600 dada:hover:bg-primary-700 dada:focus:ring-primary-800">Sign in</button>
+                    <button type="submit" class="w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dada:bg-primary-600 dada:hover:bg-primary-700 dada:focus:ring-primary-800">Sign in</button>
                     <p class="text-sm font-light text-gray-500 dada:text-gray-400">
                         Don’t have an account yet? <a href="{{route('register')}}" class="font-medium text-primary-600 hover:underline dada:text-primary-500">Sign up</a>
                     </p>

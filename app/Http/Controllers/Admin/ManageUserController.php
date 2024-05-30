@@ -56,7 +56,7 @@ class ManageUserController extends Controller
             'organization_id' => $request->organization_id
 
         ]);
-        return redirect()->route('admin.user.index')->with('success', 'User created successfully.');
+        return redirect()->route('admin.user.index')->with('popsuccess', 'User created successfully.');
     }
 
     /**

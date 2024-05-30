@@ -46,6 +46,9 @@
                             description
                         </th>
                         <th scope="col" class="font-semibold ">
+                            organization
+                        </th>
+                        <th scope="col" class="font-semibold ">
                             status
                         </th>
 
@@ -56,6 +59,7 @@
                 </thead>
 
                 @foreach ($programs as $program)
+                {{-- @dd($program->program) --}}
                     <tbody class="bg-white divide-y divide-gray-200 text-center">
                         <tr>
                             <td class="">
@@ -70,7 +74,14 @@
                             </td>
                             <td class="">
                                 <div>
-                                    organ
+                                    {{ $program->description }}
+
+                                </div>
+                            </td>
+                            <td class="">
+                                <div>
+                                    {{ $program->program->name }}
+
                                 </div>
                             </td>
                             <td class="">

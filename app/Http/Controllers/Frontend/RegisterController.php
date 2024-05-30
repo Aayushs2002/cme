@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
@@ -17,17 +18,40 @@ class RegisterController extends Controller
         $organizations = Organization::get();
         return view('frontend.auth.register', compact('organizations'));
     }
+    public function fileUpload(Request $request, $name)
+    {
+        $imageName = '';
+        if ($image = $request->file($name)) {
+            $destinationPath = public_path() . '/uploads/';
+            $imageName = date('YmdHis') . $name . "." . $image->getClientOriginalName();
+            $image->move($destinationPath, $imageName);
+            $image = $imageName;
+        }
+        return $imageName;
+    }
+
+    public function imageDelete($filePath)
+    {
+        $destinationPath = public_path('uploads/');
+
+        if (file_exists($destinationPath . $filePath)) {
+            unlink($destinationPath . $filePath);
+        }
+    }
 
     public function signuppost(Request $request)
     {
         //  dd($request);
-        $req = $request->all();
+        $image = $this->fileUpload($request, 'photo');
 
+        // dd($image);
+        $req = $request->all();
+        $req['photo'] = $image;
         $req['password'] = Hash::make($request->password);
 
         Member::create($req);
 
-        return redirect('/userlogin')->with('success', 'Registration successful. Please log in.');
+        return redirect('/userlogin')->with('popsuccess', 'Registration successful. Please log in.');
     }
 
     public function login()
@@ -44,9 +68,16 @@ class RegisterController extends Controller
 
         if (Auth::guard('members')->attempt($credentials)) {
             // dd("sucess");
-            return redirect()->route('dashboard')->with('success', 'Login Successful');
+            return redirect()->route('dashboard')->with('popsuccess', 'Login Successful');
         }
 
-        return redirect()->route('login')->with('error', 'Credentials do not match');
+        return redirect()->route('login')->with('poperror', 'Credentials do not match');
+    }
+
+    public function logout(){
+        // dd("adad");
+        Session::flush();
+        Auth::guard('members')->logout();
+        return redirect()->route('login');
     }
 }

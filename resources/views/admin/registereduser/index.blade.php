@@ -45,6 +45,9 @@
                         <th scope="col" class="font-semibold ">
                             Cme Program
                         </th>
+                        <th scope="col" class="font-semibold ">
+                            Organization
+                        </th>
                     
 
                         <th scope="col" class="font-semibold ">
@@ -69,8 +72,17 @@
                                   {{$cmes->cme->title}}
                               </div>
                           </td>
+                          <td class="">
+                              <div>
+                                  {{$cmes->orgs->name}}
+                              </div>
+                          </td>
                         
-
+                          <td>
+                            <a href="{{route('admin.register.view',$cmes->id)}}" class="">
+                                View
+                            </a>
+                          </td>
                          
                       </tr>
 

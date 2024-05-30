@@ -12,6 +12,14 @@ class AuthController extends Controller
     {
         return view("admin.auth.login");
     }
+    
+    public function logout()
+    {
+
+            Auth::logout();
+            return redirect()->route('admin.login')->with("popsuccess","logout successfully");
+
+    }
 
     public function store(Request $request)
     {
@@ -26,7 +34,7 @@ class AuthController extends Controller
                 return redirect()->route('admin.dashboard')->with('popsuccess', 'Login Successful');
             }
   
-            return redirect()->route('admin.login')->with('error', 'Credentials do not match');
+            return redirect()->route('admin.login')->with('poperror', 'Credentials do not match');
      
     }
 }

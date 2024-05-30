@@ -17,7 +17,7 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('admin.login')->with('error', 'Unauthorized');
+            return redirect()->route('admin.login')->with('poperror', 'Unauthorized');
         }
         return $next($request);
     }

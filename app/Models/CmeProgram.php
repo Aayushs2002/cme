@@ -15,4 +15,14 @@ class CmeProgram extends Model
         'status',
         'organization_id'
     ];
+
+
+    public function program(){
+        return $this->belongsTo(Organization::class,'organization_id');
+    }
+    
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
 }

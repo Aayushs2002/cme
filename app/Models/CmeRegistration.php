@@ -13,6 +13,8 @@ class CmeRegistration extends Model
         'cme_id',
         'name',
         'email',
+        'organization_id',
+        'status'
     ];
 
     public function member(){
@@ -21,6 +23,10 @@ class CmeRegistration extends Model
 
     public function cme(){
         return $this->belongsTo(CmeProgram::class,'cme_id','id');
+
+    }
+    public function orgs(){
+        return $this->belongsTo(Organization::class,'organization_id','id');
 
     }
 

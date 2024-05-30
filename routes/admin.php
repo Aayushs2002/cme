@@ -16,6 +16,19 @@ Route::middleware(["admin"])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('organization', OrganizationController::class);
     Route::resource('user', ManageUserController::class);
-    Route::resource('cme', CmeController::class)->middleware('admin');
+   
+    Route::middleware(['auth'])->group(function () {
+        Route::resource('cme', CmeController::class)->except(['edit', 'update', 'destroy']);
+        Route::middleware(['is_org_admin'])->group(function () {
+            Route::resource('cme', CmeController::class)->only(['edit', 'update', 'destroy']);
+        });
+    });
+
     Route::get('registereduser', [RegisteredUser::class, 'index'])->name('registered.member');
+    Route::post('logouts', [AuthController::class, 'logout'])->name('admin.logout');
+    Route::get('registereduser/view/{id}', [RegisteredUser::class, 'view'])->name('register.view');
+
+
+    Route::post('/registereduser/{id}/verify', [RegisteredUser::class, 'verify'])->name('cmeregistration.verify');
+    Route::post('/registereduser/{id}/reject', [RegisteredUser::class, 'reject'])->name('cmeregistration.reject');
 });

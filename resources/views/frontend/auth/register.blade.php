@@ -9,7 +9,7 @@
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dadad:text-white">
                         Create an account
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="{{route('member.register')}}" method="post">
+                    <form class="space-y-4 md:space-y-6" action="{{ route('member.register') }}" method="post"  enctype="multipart/form-data">
                         @csrf
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dadad:text-white">Your
@@ -23,7 +23,31 @@
                                 name</label>
                             <input type="name" name="name" id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dadad:bg-gray-700 dadad:border-gray-600 dadad:placeholder-gray-400 dadad:text-white dadad:focus:ring-blue-500 dadad:focus:border-blue-500"
-                                placeholder="name@company.com" required="">
+                                placeholder="John doe" required="">
+                        </div>
+                        <div>
+                            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dadad:text-white">Your
+                                Address</label>
+                            <input type="text" name="address" id="address"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dadad:bg-gray-700 dadad:border-gray-600 dadad:placeholder-gray-400 dadad:text-white dadad:focus:ring-blue-500 dadad:focus:border-blue-500"
+                                placeholder="eg:newyork" required="">
+                        </div>
+                        <div>
+                            <label for="photo" class="block mb-2 text-sm font-medium text-gray-900 dadad:text-white">Your
+                                 Photo</label>
+            
+                            <div
+                                class='text-sm p-2 form-control border border-grey-400 w-full rounded-md shadow-sm mb-1 mt-2'>
+                                <input type="file" name="photo"
+                                    class="image hover:border-blue-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 "
+                                    onchange="loadFile(event)" />
+                            </div>
+                            <img id="output" style="width: 70px; margin-bottom: 2px;" />
+                            @error('photo')
+                                <div class="invalid-feedback text-red-400 text-sm" style="display: block;">
+                                    * {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="">
                             <label for="organizations"
@@ -51,8 +75,7 @@
                             <label for="confirm-password"
                                 class="block mb-2 text-sm font-medium text-gray-900 dadad:text-white">Confirm
                                 password</label>
-                            <input type="password" name="confirm-password" id="confirm-password"
-                                placeholder="••••••••"
+                            <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dadad:bg-gray-700 dadad:border-gray-600 dadad:placeholder-gray-400 dadad:text-white dadad:focus:ring-blue-500 dadad:focus:border-blue-500"
                                 required="">
                         </div>
@@ -69,7 +92,7 @@
                             </div>
                         </div>
                         <button type="submit"
-                            class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dadad:bg-primary-600 dadad:hover:bg-primary-700 dadad:focus:ring-primary-800">Create
+                            class="w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dadad:bg-primary-600 dadad:hover:bg-primary-700 dadad:focus:ring-primary-800">Create
                             an account</button>
                         <p class="text-sm font-light text-gray-500 dadad:text-gray-400">
                             Already have an account? <a href="#"
@@ -80,4 +103,12 @@
             </div>
         </div>
     </section>
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            var old = document.getElementsByClassName('oldimage')[0];
+            old.classList.add("hidden");
+        };
+    </script>
 @endsection

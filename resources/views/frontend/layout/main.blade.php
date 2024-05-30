@@ -9,6 +9,7 @@
 
 </head>
 <body>
+    @include('message.index')
     <div class="">
         @include('frontend.layout.navbar')
 

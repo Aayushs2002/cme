@@ -19,6 +19,8 @@
 
 </head>
 <body>
+    @include('message.index')
+
     <div x-cloak x-data="{ sidebarOpen: true }" class="font-roboto flex min-h-screen">
         <div class="fixed w-full top-0 z-[99] bg-white">
             @include('admin.layout.navbar')

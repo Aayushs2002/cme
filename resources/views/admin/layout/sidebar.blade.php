@@ -25,31 +25,29 @@
                                 <path d="M14 4h6v4h-6z"></path>
                             </svg>
                         </div>
-                        <span
-                            class="pb-1 md:pb-0 text-3xl md:text-base block md:inline-block">Dashboard</span>
+                        <span class="pb-1 md:pb-0 text-3xl md:text-base block md:inline-block">Dashboard</span>
                     </a>
                 </li>
-                @if (check() == True)
-
-                <li class="">
-                    <a href="{{ route('admin.organization.index') }}" class="flex py-1 md:py-3 pl-1 align-middle ">
-                        <div class="mr-2">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="icon icon-tabler icon-tabler-layout-dashboard" width="24" height="24"
-                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M4 4h6v8h-6z"></path>
-                                <path d="M4 16h6v4h-6z"></path>
-                                <path d="M14 12h6v8h-6z"></path>
-                                <path d="M14 4h6v4h-6z"></path>
-                            </svg>
-                        </div>
-                        <span
-                            class="pb-1 md:pb-0 text-3xl md:text-base block md:inline-block">Society/Organization</span>
-                    </a>
-                </li>
-@endif
+                @if (check() == true)
+                    <li class="">
+                        <a href="{{ route('admin.organization.index') }}" class="flex py-1 md:py-3 pl-1 align-middle ">
+                            <div class="mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-layout-dashboard" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M4 4h6v8h-6z"></path>
+                                    <path d="M4 16h6v4h-6z"></path>
+                                    <path d="M14 12h6v8h-6z"></path>
+                                    <path d="M14 4h6v4h-6z"></path>
+                                </svg>
+                            </div>
+                            <span
+                                class="pb-1 md:pb-0 text-3xl md:text-base block md:inline-block">Society/Organization</span>
+                        </a>
+                    </li>
+                @endif
 
                 @if (check() == true)
                     <li class="">
@@ -88,7 +86,7 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="{{route('admin.registered.member')}}" class="flex py-1 md:py-3 pl-1 align-middle ">
+                    <a href="{{ route('admin.registered.member') }}" class="flex py-1 md:py-3 pl-1 align-middle ">
                         <div class="mr-2">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="icon icon-tabler icon-tabler-layout-dashboard" width="24" height="24"
@@ -104,13 +102,33 @@
                         <span class="pb-1 md:pb-0 text-3xl md:text-base block md:inline-block">Registered For Cme</span>
                     </a>
                 </li>
+                <li class="">
+                    {{-- <a href="{{route('admin.admin.logout')}}" class="flex py-1 md:py-3 pl-1 align-middle "> --}}
+                    <form action="{{ route('admin.admin.logout') }}" method="POST">
+                        @csrf
 
 
+                        <button class= "flex">
+                            <div class="mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-layout-dashboard" width="24"
+                                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M4 4h6v8h-6z"></path>
+                                    <path d="M4 16h6v4h-6z"></path>
+                                    <path d="M14 12h6v8h-6z"></path>
+                                    <path d="M14 4h6v4h-6z"></path>
+                                </svg>
+                            </div>
+                            <div class="">
 
-
-
-
-
+                                logout
+                            </div>
+                        </button>
+                    </form>
+                    {{-- </a> --}}
+                </li>
 
         </div>
     </div>

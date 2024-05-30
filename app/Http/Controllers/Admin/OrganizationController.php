@@ -34,7 +34,7 @@ class OrganizationController extends Controller
     {
         $req = $request->all();
         Organization::create($req);
-        return redirect()->route('admin.organization.index')->with('success', 'organization Added');
+        return redirect()->route('admin.organization.index')->with('popsuccess', 'organization Added');
 
     }
 
@@ -50,7 +50,7 @@ class OrganizationController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Organization $organization)
-    {
+    { 
 
         return view('admin.organization.edit', compact('organization'));
     }
@@ -62,7 +62,7 @@ class OrganizationController extends Controller
     {
         $req = $request->all();
         $organization->update($req);
-        return redirect()->route('admin.organization.index')->with('success', 'Organization Edited');
+        return redirect()->route('admin.organization.index')->with('popsuccess', 'Organization Edited');
 
     }
 
@@ -72,6 +72,6 @@ class OrganizationController extends Controller
     public function destroy(Organization $organization)
     {
         $organization->delete();
-        return redirect()->route('admin.organization.index')->with('success', 'Organization Deleted');
+        return redirect()->route('admin.organization.index')->with('popsuccess', 'Organization Deleted');
     }
 }

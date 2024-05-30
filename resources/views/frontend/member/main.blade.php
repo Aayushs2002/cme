@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +16,22 @@
             display: none;
         }
     </style>
- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+
+    {{-- <link href='https://fonts.googleapis.com/css?family=La Belle Aurore' rel='stylesheet'> --}}
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <style>
+        body {
+            font-family: "Sofia", sans-serif;
+        }
+    </style> --}}
 </head>
+
 <body>
     <div x-cloak x-data="{ sidebarOpen: true }" class="font-roboto flex min-h-screen">
         <div class="fixed w-full top-0 z-[99] bg-white">
+            @include('message.index')
             @include('frontend.member.navbar')
         </div>
         @include('frontend.member.sidebar')
@@ -30,6 +41,8 @@
                 @yield('body')
             </div>
         </main>
+
     </div>
 </body>
+
 </html>

@@ -45,9 +45,9 @@
                         <th scope="col" class="font-semibold ">
                             phone
                         </th>
-                        <th scope="col" class="font-semibold ">
+                        {{-- <th scope="col" class="font-semibold ">
                             email
-                        </th>
+                        </th> --}}
 
                         <th scope="col" class="font-semibold ">
                             Actions
@@ -73,11 +73,11 @@
                                     {{ $organization->phone }}
                                 </div>
                             </td>
-                            <td class="">
+                            {{-- <td class="">
                                 <div>
                                     {{ $organization->email }}
                                 </div>
-                            </td>
+                            </td> --}}
 
                             <td>
                                 <div class="flex p-2 justify-center items-center">

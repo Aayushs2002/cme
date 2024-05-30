@@ -14,5 +14,11 @@ class Member extends Authenticatable
         'email',
         'organization_id',
         'password',
+        'address',
+        'photo'
     ];
+
+    public function registerduser(){
+        return $this->belongsTo(Organization::class,'organization_id');
+    }
 }
